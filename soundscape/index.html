@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- Google HTML5 slide template Authors: Luke Mahé (code) Marcin Wichary
+(code and design) Dominic Mazzoni (browser compatibility) Charles Chen
+(ChromeVox support) URL: http://code.google.com/p/html5slides/ -->
+<html>
+    
+    <head>
+        <title>Soundscape</title>
+        <meta charset='utf-8'>
+        <!--script src='http://html5slides.googlecode.com/svn/trunk/slides.js'></script-->
+        <script src='js/slides.js'></script>
+    </head>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <style>
+        /* Your individual styles here, or just use inline styles if that’s
+       what you want. */
+    </style>
+    
+    <body style='display: none'>
+        <section class='slides layout-regular template-io2011'>
+            <!-- Your slides (<article>s) go here. Delete or comment out the
+           slides below. -->
+            <article>
+                <h1 class="bigger">Soundscape</h1>
+                <img src="images/earplugs.jpg" style="position: absolute; right: 0; top: 50%; margin-top: -225px; z-index: -1">
+            </article>
+            <article>
+                <h1 class='blue'>
+                    Mashing-Up
+                    <br>With N<img src="images/mapsIcon.png" style="display: inline-block; margin: 0 0 0 2px">kia Maps</h1>
+                <p>Massimiliano Marcon (@mmarcon)
+                    <br>Simon Madine (@thingsinjars)
+                    <br><br>May 8, 2012</p>
+            </article>
+            <article>
+                <h3 class="blue">Game - City Exploration Experience</h3>
+                <ul class="build">
+                    <li>Hamstery</li>
+                    <li>HTML5/CSS3</li>
+                    <li>All about being on the edge: only Chrome support, even better with Canary</li>
+                    <li>Mixes maps, geolocated environmental sounds, events information and images for a full exploration experience</li>
+                </ul>
+                <img src="images/hamster.jpg" style="position: absolute; right: 0; bottom: 0; z-index: -1;" class="to-fade">
+            </article>
+            <article>
+                <h3 class="blue">Soundscape</h3>
+                <ul>
+                    <li>As the user moves the flying hamster around we set the <strong>listener position (lat, lon) and orientation (radians)</strong> into our <code>Audio</code> object.</li>
+                    <li>When the user requests sounds the application pulls sounds (via XHR) from Freesound for the viewport bounding-box and events from LastFM located around the center of the map. If there are events we retrieve the corresponding mp3 from Dizzler.</</li>
+                    <li>The <strong>Web Audio</strong> API takes care of playing sounds based on location and orientation of the listener.</li>
+                </ul>
+            </article>
+            <article>
+                <h3 class="blue">Challenges</h3>
+                <ul>
+                    <li><strong class="blue">Cross-Origin Resources.</strong> Deezer serves mp3 w/o <code>Access-Control-Allow-Origin: *</code></li>
+                    <li><strong class="blue">Streaming format for mp3s.</strong> Mp3s are served for streaming. Web Audio doesn't like that.</li>
+                    <li><strong class="blue">High memory &amp; CPU utilization.</strong></li>
+                </ul>
+            </article>
+            <article>
+                <h3 class="blue">How we did it</h3>
+                <img src="images/arch.png" style="display: block; position: relative; top:50%; z-index: -1; margin: -250px auto 0 auto;">
+            </article>
+            <article>
+                <h3 class="blue">Demo <span class="small">(soundscape.nodester.com)</span></h3>
+                <iframe src="http://soundscape.nodester.com" width="100%" height="100%"></iframe>
+            </article>
+            <article>
+                <h3 class="blue">APIs</h3>
+                <ul>
+                    <li><strong class="blue">Nokia Maps</strong> (http://api.maps.nokia.com) - for maps, markers, bubbles</li>
+                    <li><strong class="blue">Freesound</strong> (http://www.freesound.org/docs/api) - to pull environmental sounds</li>
+                    <li><strong class="blue">Last FM</strong> (http://www.last.fm/api) - to retrieve events</li>
+                    <li><strong class="blue">Deezer</strong> (http://developers.deezer.com/api) - to pull previews os popular songs by artist</li>
+                </ul>
+            </article>
+            <article>
+                <h3 class="blue">Links</h3>
+                <ul>
+                    <li><strong class="blue">GIT repository</strong><br>https://github.com/mmarcon/htm5Hackathon</li>
+                    <li><strong class="blue">Demo</strong><br>http://soundscape.nodester.com</li>
+                    <li><strong class="blue">These slides</strong><br>https://github.com/mmarcon/slides/tree/master/soundscape</li>
+                    <li><strong class="blue">Authors</strong><br>@thingsinjars, @mmarcon</li>
+                    <img src="images/links.jpg" style="position: absolute; right: 0; bottom: 10px; z-index: -1">
+                </ul>
+            </article>
+            <article>
+                <h1>Thank you!</h1>
+                <img src="images/earplugs.jpg" style="position: absolute; right: 0; top: 50%; margin-top: -225px; z-index: -1">
+            </article>
+        </section>
+    </body>
+
+</html>
