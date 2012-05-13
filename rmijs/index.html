@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>RMI.js | Remote Method Invocation in the Javascript world</title>
+
+    <meta name="description" content="RMI.js takes you beyond the boundaries of the browser by introducing remote method invocation with Javas
+    cript">
+    <meta name="author" content="Massimiliano Marcon" />
+
+    <link href="css/reset.css" rel="stylesheet" />
+    <link href="css/impress.css" rel="stylesheet" />
+</head>
+<body>
+
+<div id="impress" class="impress-not-supported">
+
+    <div class="fallback-message">
+        <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+        <p>For the best experience please use the latest <b>Chrome</b> or <b>Safari</b> browser. Firefox 10 (to be released soon) will also handle it.</p>
+    </div>
+
+
+    <!-- RMI.js PRESENTATION -->
+
+    <div id="intro" class="step slide" data-x="-1000" data-y="-1500" data-scale="2" data-tweet="RMI.js presentation is about to start at Nokia tech talk.">
+        <h1 class="title">RMI.js</h1>
+        <footer>
+            <p>Massimiliano Marcon (@mmarcon) - 07.02.12
+        </footer>
+    </div>
+
+
+    <div id="title" class="zero step" data-x="-280" data-y="0" data-scale="4" data-tweet="RMI.js goes beyond the boundaries of the browser: Remote Method Invocation for #Javascript">
+        <h2>Beyond the boundaries of the browser.</h2>
+    </div>
+
+    <div id="summary" class="zero step" data-x="3000" data-y="0" data-z="0" data-rotate="90" data-scale="5">
+        <h3 class="title">Summary</h3>
+        <ul>
+            <li>Demo first <span>Quite unusual...</span></li>
+            <li>What <span>What is RMI.js?</span></li>
+            <li>Why <span>Advantages and possible use cases</span></li>
+            <li>How <span>Architecture &amp; Implementation</span></li>
+            <li>Chat <span>Status, Next steps, Q&amp;A...</span></li>
+        </ul>
+    </div>
+
+    <div id="demo-intro" class="step" data-x="-3000" data-y="3000" data-rotate="90" data-scale="6" data-tweet="Hey, a demo, already?!">
+        <p><b>Demo</b> Demo first? Quite unusual...</p>
+    </div>
+
+    <div id="demo" class="zero no-overview step" data-x="-3000" data-y="3000" data-z="-3000" data-rotate="-90" data-scale="1" data-tweet="Demo: live tweets directly from the presentation code... WOW! #awesome">
+        <p>
+           Follow <b>@rmijs</b> on Twitter...
+        </p>
+        <p>
+            <img src="img/demo.png" alt="Demo screenshot" />
+        </p>
+        <p>
+           I'll show the code at the end of the presentation.
+        </p>
+    </div>
+
+    <div id="what-intro" class="step" data-x="-1000" data-y="3000" data-rotate="90" data-scale="6">
+        <p><b>What</b> is RMI.js?</p>
+    </div>
+
+    <div id="what" class="zero no-overview step" data-x="-3000" data-y="6000" data-z="-2000" data-rotate="0" data-scale="1">
+        <p>Think of Java Remote Method Invocation <b>(RMI)</b> in the Javascript world.</p>
+    </div>
+    <div id="what1" class="zero no-overview step" data-x="-2400" data-y="6000" data-z="-4000" data-rotate="-90" data-scale="1" data-tweet="Remote Method Invocation is cool, but may look cumbersome if you look at Java RMI...">
+        <p>Java RMI was a good idea. Almost.</p>
+        <p>
+           You can have a distributed system where clients can invoke methods that are implemented
+           somewhere else.
+        </p>
+        <p>
+           The bad part is the overly complex way in which this can be accomplished: stub, skeleton, interfaces
+           that have to extend <code>java.rmi.Remote</code>, naming lookup, policy files for permissions, <span class="etc">etc. etc. etc.</span>
+        </p>
+        <p>
+            <img src="img/RMI.png" alt="RMI architecture" />
+        </p>
+    </div>
+    <div id="what2" class="zero no-overview step" data-x="-1700" data-y="6000" data-z="-6000" data-rotate="-180" data-scale="1" data-tweet="With RMI.js I am reusing the concepts of RMI rethinking everything in the #Javascript way: simple and flexible.">
+        <p>The idea behind RMI.js</p>
+        <p>
+           is to reuse the good concepts behind Java RMI and make remote invocations simple and efficient
+           by taking advantage of the flexibily and the peculiarities of Javascript.
+        </p>
+    </div>
+
+    <div id="what-technologies" class="zero no-overview step" data-x="-1700" data-y="6800" data-z="-8000" data-rotate="-270" data-scale="1" data-tweet="Browser side #Javascript + Node.js + Socket.io = RMI.js :)">
+        <p>Browser side <b>Javascript</b> +</p>
+        <p><b>Node.js</b> +</p>
+        <p><b>Socket.io</b> =</p>
+        <p>RMI.js</p>
+    </div>
+
+    <div id="why-intro" class="step" data-x="1000" data-y="3000" data-rotate="90" data-scale="6">
+        <p><b>Why</b> would I use RMI.js?</p>
+    </div>
+
+    <div id="why" class="zero no-overview step" data-x="1000" data-y="5500" data-z="-2000" data-rotate="0" data-scale="1" data-tweet="RMI.js: Beautiful, compact more semantic code. Additionally less confusing and therefore more maintainable.">
+        <p>Because it makes your code <b>Beautiful.</b> And also more compact, semantic, less confusing and more maintainable.</p>
+    </div>
+
+    <div id="code-exampe" class="step slide" data-x="1000" data-y="5500" data-z="-2100" data-rotate="0" data-tweet="A little code example here: http://rmijs.nodester.com. *Bonus feature: Promises*">
+        <p>Say we want to load a list of users from the backend:</p>
+        <pre>
+            <code>
+$.ajax({
+    url: 'http://coolwebapp.com/rest/users',
+    success: function(data){
+                 var list = $('ul.users');
+                 $.each(data, function(user){
+                     list.append($('&lt;li&gt;' + user.name + '&lt;/li&gt;'));
+                 });
+             }
+    });
+            </code>
+        </pre>
+        <p class="vs">
+            vs
+        </p>
+        <pre>
+            <code>
+RESTService.getUsers()
+           .<b>then</b>(function(data){
+                     var list = $('ul.users');
+                     $.each(data, function(user){
+                        list.append($('&lt;li&gt;' + user.name + '&lt;/li&gt;'));
+                     });
+                 });
+            </code>
+        </pre>
+        <p class="oh-yeah-promise">Oh, yeah, you get Promises too...</p>
+    </div>
+
+    <div id="one-more-thing" class="zero no-overview step" data-x="1000" data-y="5800" data-scale="2">
+        <p>and one more <br/><b>*important*</b> thing...</p>
+    </div>
+
+    <div id="advantages" class="zero no-overview step" data-x="1000" data-y="6000" data-z="-100" data-rotate-x="-90" data-scale="2" data-tweet="Using Websockets RMI.js cuts the overhead cause by HTTP: less bandwidth, shorter latency. #awesome">
+        <p>by using Websockets <span>(via Socket.io)</span> we cut all the overhead of the HTTP protocol.</p>
+        <p><b>Less bytes</b> over the wire and significant <b>improvements in terms of latency</b>.</p>
+    </div>
+
+    <div id="smart" class="zero no-overview step" data-x="1000" data-y="6000" data-z="-100" data-rotate-x="-180" data-scale="2" data-tweet="Bonus *very experimental feature*: Method Push. The server can push remote methods to clients: WOW!">
+        <p><b>RMI.js</b> includes an additional <span>supercool</span> feature: <span>Method Push</span></p>
+        <p>
+            In the spirit of efficiency, the system can be set to push the implementation of a remote method
+            to the client when such method starts being invoked very often.<sup>*</sup>
+        </p>
+        <p><sup>*</sup>This is still at a very early stage and the implementation is poor, but it works.</p>
+    </div>
+
+    <div id="how-intro" class="step" data-x="3000" data-y="3000" data-rotate="90" data-scale="6">
+        <p><b>How</b> Architecture &amp; Implementation</p>
+    </div>
+
+    <div id="client-side" class="zero step slide" data-x="7000" data-y="2100" data-rotate="180" data-scale="2">
+        <h3 class="title">On the client side</h3>
+        <p>The developer creates sort-of-a-stub:</p>
+        <pre>
+            <code>
+var SortOfAStub = {};
+SortOfAStub.myRemoteMethod = function(){}; //Just a placeholder...
+SortOfAStub.myRemoteMethod.<b>remote</b> = true;  //The method is remote
+
+SortOfAStub.thisMethodIsNotRemoteInstead = function(){
+    console.log('foo')}; //This method is local instead
+                         //<b>local and remote can be mixed</b>
+};
+            </code>
+        </pre>
+        <p>And then the magic happens...</p>
+        <pre>
+            <code>
+<b>RMIJS.Client</b>(SortOfAStub).setEndpoint('http://server.com');
+            </code>
+        </pre>
+        <p>
+            Behind the scenes the empty <b>remote methods</b> are replaced
+            with a closure that when called triggers a remote invocation.
+        </p>
+    </div>
+
+    <div id="server-side" class="zero step slide" data-x="7000" data-y="2100" data-rotate="180" data-rotate-x="180" data-scale="2">
+        <h3 class="title">On the Node.js side</h3>
+        <pre>
+            <code>
+npm install rmi.js socket.io express
+            </code>
+        </pre>
+        <p>Environment setup + remote implementation:</p>
+        <pre>
+            <code>
+var express = require('express'), app = express.createServer(),
+    io = require('socket.io'), rmi = require('rmi.js'),
+    socketio = io.listen(app);
+
+rmi.handleRoutesFor(app); //So client-side and shared code are delivered
+                          //to clients via express
+rmi.ServerFactory.forImplementation({
+    <b>myRemoteMethod</b>: function(){ <b>//Remote implementation</b>
+        //Maybe do some stuff...
+        return 'bar'
+    }
+});
+
+socketio.sockets.on('connection', function(socket) {
+    //when a connection is received
+    //Socket.io passed it to RMI.js:
+    //an instance of RMIJS.Server is returned
+    var rmiServer = rmi.ServerFactory.getHandler(socket);
+});
+            </code>
+        </pre>
+    </div>
+    
+    <div id="demo-client-code" class="zero step" data-x="8500" data-y="2100" data-rotate="0" data-scale="1" data-tweet="Example of remote method (client side): http://dl.dropbox.com/u/234787/rmijs/client-code.png">
+        <p>
+           The code currently running in my browser...
+        </p>
+        <p>
+            <img src="img/client-code.png" alt="Client code" />
+        </p>
+    </div>
+    
+    <div id="demo-server-code" class="zero step" data-x="8500" data-y="3100" data-rotate="-180" data-scale="1" data-tweet="Example of remote method (server side): http://dl.dropbox.com/u/234787/rmijs/server-code.png">
+        <p>
+           ...and what is running on the server.
+        </p>
+        <p>
+            <img src="img/server-code.png" alt="Server code" />
+        </p>
+    </div>
+    
+    <div id="some-links" class="zero step slide" data-x="7000" data-y="4100" data-rotate="0" data-scale="2">
+        <h3 class="title">Some Links</h3>
+        <p><b>Home page:</b> http://rmijs.nodester.com</p>
+        <p><b>Github:</b> https://github.com/mmarcon/rmi.js</p>
+        <p><b>Twitter:</b> @rmijs</p>
+        <hr/>
+        <p><b>Node.js:</b> http://nodejs.org</p>
+        <p><b>Socket.io:</b> http://socket.io</p>
+    </div>
+    
+    <div id="discussion" class="step" data-x="5000" data-y="3000" data-rotate="90" data-scale="6" data-tweet="What is next? What should be next? I take questions via Twitter, I'll reply later via mention or DM. Or even email.">
+        <p><b>Chat</b> Status, Next steps, Q&amp;A...</p>
+    </div>
+    
+    <div id="thankyou" class="step slide" data-x="6000" data-y="-1500" data-scale="2" data-tweet="Thank you all for the attention. Feel free to contact me for any question or suggestion, or *opportunities* to improve...">
+        <h1 class="title">Thank you.</h1>
+    </div>
+
+
+    <!-- END RMI.js PRESENTATION -->
+
+    <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="12">
+    </div>
+
+
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+<script src="js/impress.js"></script>
+
+</body>
+</html>
+
