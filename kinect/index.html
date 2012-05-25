@@ -30,6 +30,7 @@
                     <br>Nokia Maps.</h1>
                 <p>Massimiliano Marcon (@mmarcon)
                     <br><br>May 25, 2012</p>
+                <img src="images/kinect-photo.png" style="position: absolute; right: 0; bottom: 0; z-index: -1;">
             </article>
             <article>
                 <h3 class="blue">Goals of my Research Week</h3>
@@ -41,11 +42,15 @@
             </article>
             <article>
                 <h3 class="blue">Mission accomplished. Almost.</h3>
-                
+                <ul>
+                    <li>Evaluated a number of framewors (Microsoft's SDK, Kinecteventserver, DephtJS, Zigfu, ...)</li>
+                    <li>Implemented a general purpose layer that streams Kinect events</li>
+                    <li>Implemented a proof-of-concept: all of this is really doable!</li>
+                </ul>
             </article>
             <article>
                 <h3 class="blue">Why Almost?</h3>
-                <p class="bigger">Defining a <em>gesture</em> from the (x,y,z) positions of the user's joints is hard. Very hard.</p>
+                <p class="bigger" style="margin-top: 60px;">Defining a <em>gesture</em> from the (x,y,z) positions of the user's joints is hard. Very hard.</p>
                 <img src="images/hard.jpg" style="position: absolute; right: 0; bottom: 0; z-index: -1;">
             </article>
             <article>
@@ -53,14 +58,24 @@
                 <img src="images/architecture.png" style="display: block; position: relative; top:50%; z-index: -1; margin: -230px auto 0 auto;">
             </article>
             <article>
+                <h3 class="blue">Related Work</h3>
+                <p>Just last night I learned that one of the WebGL guys had already done some work on this. In fact he had a complete
+                    implementation of Maps WebGL controlled via Kinect.</p>
+                    <p>BUT he used KinectJS that is build on top Kinect SDK = Windows only.</p>
+                <iframe width="560" height="315" src="http://www.youtube.com/embed/w9CFDiDYWI4?rel=0" frameborder="0" allowfullscreen style="margin: 20px auto; with: 560px; height: 315px"></iframe>
+            </article>
+            <article>
                 <h3 class="blue">Links</h3>
                 <ul>
-                    <li><strong class="blue">GIT repository</strong><br>https://github.com/mmarcon/htm5Hackathon</li>
-                    <li><strong class="blue">Demo</strong><br>http://soundscape.nodester.com</li>
-                    <li><strong class="blue">These slides</strong><br>http://mmarcon.github.com/slides/soundscape</li>
-                    <li><strong class="blue">Authors</strong><br>@thingsinjars, @mmarcon</li>
-                    <img src="images/links.jpg" style="position: absolute; right: 0; bottom: 10px; z-index: -1">
+                    <li><strong class="blue">Zigfu (Kinect Browser Plugin)</strong><br>http://zigfu.com</li>
+                    <li><strong class="blue">Depth.js (Open source)</strong><br>https://github.com/doug/depthjs</li>
+                    <li><strong class="blue">Kinect.js</strong><br>http://kinect.childnodes.com</li>
+                    <li><strong class="blue">Author</strong><br>@mmarcon</li>
                 </ul>
+            </article>
+            <article>
+                <h3 class="blue">One more thing...</h3>
+                <img src="images/leap-photo.jpg" style="display: block; margin: 60px auto">
             </article>
             <article>
                 <h1>Thank you!</h1>
