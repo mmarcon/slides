@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- Google HTML5 slide template Authors: Luke Mahé (code) Marcin Wichary
+(code and design) Dominic Mazzoni (browser compatibility) Charles Chen
+(ChromeVox support) URL: http://code.google.com/p/html5slides/ -->
+<html>
+    
+    <head>
+        <title>How late is later?</title>
+        <meta charset='utf-8'>
+        <!--script src='http://html5slides.googlecode.com/svn/trunk/slides.js'></script-->
+        <script src='js/slides.js'></script>
+    </head>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <style>
+        /* Your individual styles here, or just use inline styles if that’s
+       what you want. */
+    </style>
+    
+    <body style='display: none'>
+        <section class='slides layout-regular template-io2011'>
+            <!-- Your slides (<article>s) go here. Delete or comment out the
+           slides below. -->
+            <article style="background:url(images/clock.jpeg); background-size: cover;">
+                <h1 class="bigger inverted">How late is later?</h1>
+            </article>
+            <article>
+                <h1 class='c222'>A lazy loading solution on the edge between very clever and incredibly mad.</h1>
+                <p>Massimiliano Marcon (@mmarcon)
+                    <br><br>July 31, 2012</p>
+            </article>
+            <article>
+                <h3 class="inverted">The Challenge</h3>
+                <ul class="build bigger c222">
+                    <li>The amount of code the browser loads affects performance...</li>
+                    <li>... and influences the perceived loading time</li>
+                </ul>
+                <div style="position: absolute; right: 0; bottom: 0; top: 0; left: 0; z-index: -1; background:url(images/challenge.jpeg); background-size: cover;" class="to-fade"></div>
+            </article>
+            <article>
+                <h3 class="inverted">More code</h3>
+                <ul class="build bigger c222">
+                    <li>Higher transfer time</li>
+                    <li>More time to parse it</li>
+                </ul>
+                <div style="position: absolute; right: 0; bottom: 0; top: 0; left: 0; z-index: -1; background:url(images/code.jpeg); background-size: cover;" class="to-fade"></div>
+            </article>
+            <article>
+                <h3 class="inverted">Is all that code really necessary?</h3>
+                <ul class="build bigger c222">
+                    <li>Do we need all that code to bootstrap?</li>
+                    <li>Couldn't we lazy load part of it instead?</li>
+                </ul>
+                <div style="position: absolute; right: 0; bottom: 0; top: 0; left: 0; z-index: -1; background:url(images/code.jpeg); background-size: cover;" class="to-fade"></div>
+            </article>
+
+            <article>
+                <img src="images/yeswecan.jpeg" style="display: block; margin: auto;"/>
+                <br>
+                <div style="text-align: center;">
+                    <h3 class="bigger inverted">BUT</h3>
+                </div>
+                <p>When is the right time to lazy load code? <span class="inverted">How late is later?</span></p>
+            </article>
+
+
+            
+            <article>
+                <h1 class="bigger inverted">Thank you!</h1>
+            </article>
+        </section>
+    </body>
+
+</html>
