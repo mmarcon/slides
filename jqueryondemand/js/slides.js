@@ -501,6 +501,11 @@ function handleBodyKeyDown(event) {
     case 8: // Backspace
     case 33: // PgUp
       prevSlide();
+      var toFade = slideEls[curSlide].querySelectorAll('.to-fade');
+
+      Array.prototype.forEach.call (toFade, function(el){
+        el.classList.add('faded');
+      });
       event.preventDefault();
       break;
 

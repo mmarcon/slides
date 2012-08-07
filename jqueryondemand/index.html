@@ -33,6 +33,7 @@
                 <ul class="build bigger c222">
                     <li>The amount of code the browser loads affects performance...</li>
                     <li>... and influences the perceived loading time</li>
+                    <li><span class="inverted">Ideally we want to have less code to load.</span></li>
                 </ul>
                 <div style="position: absolute; right: 0; bottom: 0; top: 0; left: 0; z-index: -1; background:url(images/challenge.jpeg); background-size: cover;" class="to-fade"></div>
             </article>
@@ -62,9 +63,92 @@
                 <p>When is the right time to lazy load code? <span class="inverted">How late is later?</span></p>
             </article>
 
-
-            
             <article>
+                <h3 class="inverted">The Whole Story</h3>
+                <div style="position: absolute; right: 0; bottom: 0; top: 0; left: 0; z-index: -1; background:url(images/story.jpeg); background-size: cover;"></div>
+            </article>
+
+            <article>
+                <h3>I, as a user...</h3>
+                <p>... open my browser, and start typing a URL in my address bar.</p>
+                <img src="images/browser-url.png" style="display: block; margin: 100px auto;"/>
+            </article>
+
+            <article>
+                <h3 class="inverted in-the-middle">ASAP</h3>
+                <p style="width: 55%">Only load the minimum amount of code that is required to bootstrap the application.</p>
+                <div style="position: absolute; right: 0; bottom: 0; top: 0; left: 0; z-index: -1; background:url(images/asap.jpeg); background-size: cover;"></div>
+            </article>
+
+            <article>
+                <h3>&ldquo;Nice, this application is quite fast...&bdquo;</h3>
+                <p>Now we can start enriching the application and <span class="inverted">lazy-load</span> other features.</p>
+                <div style="position: absolute; right: 0; bottom: 0; top: 0; left: 0; z-index: -1; background:url(images/features.jpeg); background-size: cover;"></div>
+                <p>Ideally we only want to load the <span class="inverted">code to bootstrap</span> the features. For features that are not there until the user clicks on something, it is non-sense to download everything in advance. It would be a <span class="inverted">waste of bandwidth</span>.</p>
+            </article>
+
+            <article>
+                <h3>How can we make it better then?</h3>
+                <p>We could load some portions of the code <span class="inverted">on demand</span>, <br>i.e. only when a function is invoked or an object is actually needed.</p>
+                <p>Wow. This sounds somehow hard...</p>
+                <div style="position: absolute; right: 0; bottom: 0; top: 0; left: 0; z-index: -1; background:url(images/ondemand.jpeg); background-size: cover; opacity:0.5"></div>
+            </article>
+
+            <article>
+                <h1 class="bigger inverted">Nope!</h1>
+                <div style="position: absolute; right: 0; bottom: 0; top: 0; left: 0; z-index: -1; background:url(images/jqueryondemand.png); background-size: cover; opacity:0.5"></div>
+            </article>
+
+            <article>
+                <h3>jQuery plugins on demand</h3>
+                <ul>
+                    <li>jQuery On Demand can be used to lazy-load on demand other jQuery plugins.</li>
+                    <li>With a little trick this happens <span class="inverted">with no changes</span> to existing code</li>
+                </ul>
+                <p>Demo: <a href="http://lab.marcon.me/ondemand" target="_blank">jQuery UI widgets on demand</a></p>
+                <div style="background: #111; display: block; margin: 100px auto; width: 300px; padding: 10px; text-align: center; border-radius: 4px;"><img src="images/ui.gif"/></div>
+            </article>
+
+            <article>
+                <h3>How?</h3>
+                <pre style="font-size: 16px; line-height: 1.2">
+(function(){
+    var functions = ['accordion', 'dialog', 'tabs',
+                     'datepicker', 'slider', 'progressbar'];
+
+    functions.forEach(function(f){
+        $.fn[f] = function(){
+            $.onDemand.invoke(f, arguments, this);
+            return this;
+        };
+    });
+
+    $.onDemand.setOptions({
+        fn2script: function(fn){
+            return 'development-bundle/ui/minified/jquery.ui.' + fn + '.min.js';
+        },
+        jqueryPlugin: true
+    });
+
+    //Preload important stuff
+    $.onDemand.preload('core');
+    $.onDemand.preload('widget');
+    $.onDemand.preload('mouse');
+    $.onDemand.preload('position');
+    $.onDemand.preload('draggable');
+})();
+                </pre>
+            </article>
+
+            <article>
+                <h3>TODO List</h3>
+                <ul>
+                    <li><code>$.onDemand.preload</code> show allow to express dependencies</li>
+                    <li>Should allow developers to be a little smarter in terms of <span class="inverted">when to load stuff</span> (Transfer time statistics).</li>
+                </ul>
+            </article>
+            
+            <article style="background:url(images/clock.jpeg); background-size: cover;">
                 <h1 class="bigger inverted">Thank you!</h1>
             </article>
         </section>
